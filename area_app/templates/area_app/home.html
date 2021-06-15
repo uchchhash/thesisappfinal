@@ -1,0 +1,42 @@
+{% extends "area_app/base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="row justify-content-center my-3">
+  <div class="col-5">
+    <img src="{% static 'area_app/aust_logo.jpeg' %}" class="img-fluid">
+  </div>
+</div>
+
+<div class="row justify-content-center mb-5">
+  <div class="col-md-10 text-center">
+    <h1 id="hometext" class="font-weight-bold">Choosing the path of least pedestrian density</h1>
+    <h1 class="mt-5">[Maintain Social Distancing, Stay Safe]</h1>
+  </div>
+</div>
+
+
+<h2 class="mt-5">Select an Area</h2>
+<hr>
+<div class="row">
+  {% for i in area %}
+  <div class="col-lg-4 col-md-6">
+
+    {% if i.url %}
+    <a href="{{ i.url }}">
+      <img src="{{ i.image.url }}" class="img-fluid mb-2">
+    </a>
+    {% else %}
+
+    <img src="{{ i.image.url }}" class="img-fluid mb-2">
+    {% endif %}
+    <h3>{{ i.title }}</h3>
+    <p>{{ i.description }}</p>
+
+  </div>
+  {% endfor %}
+</div>
+
+{% endblock %}
